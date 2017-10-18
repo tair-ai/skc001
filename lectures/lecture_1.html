@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>SKC001-L1</title>
+  </head>
+  <body>
+    <textarea id="source">
+
+class: middle, inverse, center
+
+# SKC001 Lecture 1
+
+# 机器学习之Python编程
+
+---
+
+class:center, middle, inverse
+
+
+## About
+
+> 课程面向初学者  
+> Tair.AI Authors   
+> nasa@tipmind.com  
+> http://tair.ai/skc001/  
+> 2017.10.22  
+
+![wechat](../img/qrcode_for_tair.jpg)
+---
+
+class: inverse
+## 语言经历分享
+```
+                                                          
+    -> matlab       矩阵操作，命令式                    建议python替代
+    -> C            性能                    
+    -> Java         web/android/bigdata               
+    -> python       简洁, AI, data            
+    -> Shell        运维, OS                          
+    -> SQL          数据库D
+    -> Javascript   web           
+    -> C#           JAVA类似, windows                       
+    -> lua          快速, web, torch7                        
+    -> swift        ios, osx                         
+    -> Golang       web                   
+    -> C++          功能性能强大                            
+```
+
+## Python适合作为第一门学习的语言
+科学计算： numpy, scipy, matplotlib, PIL  
+自动求导框架：pytorch, mxnet, chainer, tensorflow, theano
+
+## 主流语言和用途
+
+```
+python:  Machine Learning, Data mining, web，scripts, algorithm
+c++:     image/video processing, middleware, storage
+c:       middleware, hardware  
+golang:  web  
+js:      web 
+shell:   OS
+java:    NLP,data,web,database
+```
+---
+class: inverse
+### 安装Python和文档查询
+
+> 官网下载：  https://www.python.org/  
+> 官网文档：  https://docs.python.org/2/   
+> 使用版本：  python2.7 或者 python 3  （二者存在语法区别，2.7生态成熟）  
+> 包管理：    pip安装方法  https://pip.pypa.io/en/stable/installing/
+
+ubuntu下安装pip
+```
+sudo apt-get install python-pip
+```
+
+pip安装库的使用示例：
+        
+    $pip install numpy
+
+## 其他说明：
+
+> ubuntu:   系统自带安装 python2.7，需要安装 pip  
+> windows:   安装 -> 将python.exe所在路径 添加至 系统环境变量  
+> OSX:       自带python2.7, 需要安装pip
+
+## 推荐使用工具
+
+> 代码管理：git  
+> 编辑器：vscode / pycharm  (均跨平台)
+---
+class: inverse
+## Python REPL (交互命令行)
+
+启动方法:
+
+> OSX/Linux:   终端输入python  
+> windows:     CMD中输入python（正确安装python，正确设置环境变量）  
+> 退出REPL:    ctrl+d  组合键        
+
+```
+$python
+Python 2.7.10 (default, Feb  7 2017, 00:08:15) 
+[GCC 4.2.1 Compatible Apple LLVM 8.0.0 (clang-800.0.34)] on darwin
+Type "help", "copyright", "credits" or "license" for more information.
+>>>a
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'a' is not defined
+>>>a = 1
+>>>a
+1
+>>>c = a + 2
+>>>print c
+3
+>>>li = [a, 2, c]
+>>>len(li)
+3
+>>>di = {a: c, 2: c}
+>>>di
+{1: 3, 2: 3}
+>>>di.keys()
+[1, 2]
+```
+上述是python自带的REPL  
+Ipython: 提供了更好用的REPL，还可以使用更高级的notebook功能Jupyter
+---
+class: inverse
+## Ipython 安装:
+```
+$pip install ipython
+# linux / osx 
+$sudo pip install ipython
+```
+## Ipython示例：
+```
+$ ipython
+Python 2.7.10 (default, Feb  7 2017, 00:08:15) 
+Type "copyright", "credits" or "license" for more information.
+
+IPython 4.0.0 -- An enhanced Interactive Python.
+?         -> Introduction and overview of IPython's features.
+%quickref -> Quick reference.
+help      -> Python's own help system.
+object?   -> Details about 'object', use 'object??' for extra details.
+
+In [1]: a
+---------------------------------------------------------------------------
+NameError                                 Traceback (most recent call last)
+<ipython-input-1-60b725f10c9c> in <module>()
+    ----> 1 a
+
+NameError: name 'a' is not defined
+
+In [2]: a = 1
+
+In [3]: a
+Out[3]: 1
+
+In [4]: 
+```
+
+---
+class: center, middle, inverse
+# Q &amp; A
+
+    </textarea>
+    <script src="../js/remark.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+      var slideshow = remark.create({
+        highlightStyle: 'monokai',
+        highlightLanguage: 'remark'
+      });
+    </script>
+  </body>
+</html>
