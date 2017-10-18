@@ -1,3 +1,3 @@
 # Tair.ai Program [SKC001] 
 
-Introdution to Machine Learning
+Introduction to Machine Learning
