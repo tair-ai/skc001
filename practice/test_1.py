@@ -1,7 +1,9 @@
 #!/usr/bin/env python
 # encoding: utf-8
+
 # !/usr/bin/env python          ,声明解释器,不必须; 井号为注释，即井号注释代码段不会运行
 # encoding: utf-8               ,声明源码编码格式，如果源码含有中文字符，去掉该声明则程序会报错
+
 def print_a(a):         # 定义函数开始，def 为定义标识符，print_a 为函数名(标识符命名规则)，a为参数变量
     print "ENTER print_a(a） >>>>>>>>>>>>"
     print a             # 执行打印变脸函数  等价于 print a.__repr__()，:后的程序块需要严格4空格缩进格式
@@ -11,7 +13,9 @@ def print_a(a):         # 定义函数开始，def 为定义标识符，print_a 
     print "-> id(a): ", id(a), 
     print a.__repr__()# 调用类型对象的方法，该方法为内建方法(所有类型都有)，使用 . 操作符调用
     print b             # 未定义变量b，程序报错(抛出异常)，如果没有捕获异常情况下，则中断整个进程 
+    
 print ">>>>"  # 不缩进，函数体结束, 改语句在文件载入运行
+
 if __name__ == "__main__": # 文件执行入口，当该文件作为被执行文件时，执行其body的程序块，:后紧跟程序段的body
                            # if 为判断语句声明，== 为想定判断，该语句为判断 __name__ 变量为主函数类型
     print "ENTER __MAIN___ >>>>>>>>>>>>"
