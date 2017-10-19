@@ -1,4 +1,4 @@
-#encodeing: utf-8
+#encoding: utf-8
 import os
 
 print "__EXEC__ IMPORT"
