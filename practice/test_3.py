@@ -16,4 +16,5 @@ with open("test_3.txt", "r+") as f:[print_(i) for i in f.readlines()]
 
 # 将查找的 py，文件写入一个txt文件
 with open("test_3_write.txt", "w+") as f:
-    map(lambda x: f.writelines(x + "\n"), [i for i in os.listdir("./") if i.endswith(".py")])
+    [f.writelines(i + "\n") for i in os.listdir("./") if i.endswith(".py")]
+    # map(lambda x: f.writelines(x + "\n"), [i for i in os.listdir("./") if i.endswith(".py")])
