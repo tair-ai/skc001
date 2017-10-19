@@ -237,7 +237,46 @@ Traceback (most recent call last):
     print_a(s, s)          # 不按规定传参，会报错；由于上一句执行出错，因此不会执行到这一句
 TypeError: print_a() takes exactly 1 argument (2 given)
 ```
+---
+class: inverse
+#### 三 for, 包导入，文件导入，类，对象
+test_import.py代码如下
+```
+#encodeing: utf-8
+import os
+print "__EXEC__ IMPORT", __file__, "__end__ import"
+class DirInfo(object):
+    def __init__(self, fdir):
+        print ">>> EXEC INIT CLASS"
+        self.file_dir = fdir
+    def print_dir_pyfiles(self):
+        print ">>> EXEC print pyfiles"
+        files = os.listdir(self.file_dir)
+        for f in files:
+            if not f.endswith(".py"):
+                continue
+            else:print f
 
+    def print_list(self, a):
+        print ">>> EXEC print list"
+        if isinstance(a, list):
+            for i in range(len(a)):
+                if isinstance(a[i], int):
+                    print "[-] index: %d  %d" %(i , a[i])
+```
+test_2.py代码如下
+```
+import test_import
+fd = "./"
+f = test_import.DirInfo(fd)
+f.print_dir_pyfiles()
+f_ = test_import.DirInfo("../")
+f_.print_dir_pyfiles()
+a = [1, "cc", ['s', 'a'], 2, 3, "sss"]
+f_.print_list(a)
+f_.print_list([1, 3, 5])
+print "type(test_import): %s  -- type(f_): %s" % (type(test_import), type(f_))
+```
 
 ---
 class: center, middle, inverse
