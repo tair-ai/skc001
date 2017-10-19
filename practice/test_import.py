@@ -23,10 +23,11 @@ class DirInfo(object):
         print ">>> EXEC print list"
         if isinstance(a, list):
             for i in range(len(a)):
-                if isinstance(a[i], int):
-                    print "[-] index: %d  %d" %(i , a[i])
+                if isinstance(a[i], int):print "[-] index: %d  %d" %(i , a[i])
+                else: a[i] = 0
+
     @classmethod
-    def print_(self, s):
+    def print_(cls, s):
         print s
         
     def print_text_file(self, a):
