@@ -277,7 +277,26 @@ f_.print_list(a)
 f_.print_list([1, 3, 5])
 print "type(test_import): %s  -- type(f_): %s" % (type(test_import), type(f_))
 ```
+---
+class: inverse
+#### 三 高效处理问题
+```
+#encoding: utf-8
+import os
+# 打印.py文件的文件名
+print [i for i in os.listdir("./") if i.endswith(".py")]
 
+# 打印txt的内容
+with open("test_2.txt", "r+") as f: print [i for i in f.readlines()]
+
+# 导入pprint
+import pprint
+[pprint.pprint(i) for i in os.listdir("./") if i.endswith(".py")]
+
+# 定义打印函数
+def print_(s):print s
+with open("test_2.txt", "r+") as f:map(lambda x: print_(x),  [i for i in f.readlines()])
+```
 ---
 class: center, middle, inverse
 # Q &amp; A
