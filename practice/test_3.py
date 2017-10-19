@@ -18,3 +18,8 @@ with open("test_3.txt", "r+") as f:[print_(i) for i in f.readlines()]
 with open("test_3_write.txt", "w+") as f:
     [f.writelines(i + "\n") for i in os.listdir("./") if i.endswith(".py")]
     # map(lambda x: f.writelines(x + "\n"), [i for i in os.listdir("./") if i.endswith(".py")])
+
+try:
+    print b
+except NameError, e:
+    print e

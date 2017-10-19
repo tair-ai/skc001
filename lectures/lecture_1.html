@@ -301,7 +301,26 @@ with open("test_3.txt", "r+") as f:[print_(i) for i in f.readlines()]
 with open("test_3_write.txt", "w+") as f:
     [f.writelines(i + "\n") for i in os.listdir("./") if i.endswith(".py")]
     # map(lambda x: f.writelines(x + "\n"), [i for i in os.listdir("./") if i.endswith(".py")])
+
+
+try:
+    print b
+except NameError, e:
+    print e
 ```
+---
+class: inverse
+## 小结
+
+1. 基本概念: 变量，类型，关键字，标识符，内建函数，内建方法，调用，作用域
+2. 常用类型: None, bool, int, str, dict, set 以及这些类型的操作，slice和列表解析技巧
+3. 流程: for element in somesing, if elif else, continue, break
+4. 操作符: . : () = + [] "" ''  , ;
+5. 运算符: + - * ** / %  and or == is not
+6. 函数： 定义函数及参数，调用函数及传入参数，函数执行与返回
+7. 类: 类定义，类创建对象，类方法调用，类属性调用，对象方法调用，对象属性调用
+8. 库与源文件: 执行主文件与主函数，包导入，常见库使用
+9. 异常与错误：常见错误，异常处理
 ---
 class: center, middle, inverse
 # Q &amp; A
