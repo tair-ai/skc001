@@ -1,6 +1,5 @@
 #encoding: utf-8
 import os
-from pprint import pprint
 
 print "__EXEC__ IMPORT"
 print __file__
@@ -26,9 +25,3 @@ class DirInfo(object):
                 if isinstance(a[i], int):print "[-] index: %d  %d" %(i , a[i])
                 else: a[i] = 0
 
-    @classmethod
-    def print_(cls, s):
-        print s
-        
-    def print_text_file(self, a):
-        with open(a, "r+") as f:map(lambda x: self.print_(x),  [i for i in f.readlines()])
