@@ -16,3 +16,5 @@ print gray_img.shape
 plt.imshow(gray_img)
 plt.show()
 io.imsave("test_4_new.jpg", gray_img)
+plt.hist(gray_img.flatten())
+plt.show()

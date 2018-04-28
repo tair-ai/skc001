@@ -50,6 +50,13 @@ Scikit-Learning
 Matplotlib  
 官方文档 https://matplotlib.org/tutorials/index.html
 
+### 主要的图像处理库   
+
+* opencv-python      
+* PIL/Pillow   
+* scikit-image  https://github.com/scikit-image/skimage-tutorials
+
+
 ---
 class: inverse
 #### Python常用数据类型
@@ -191,13 +198,6 @@ if __name__ == "__main__":
 ---
 class: inverse
 #### 图像处理
-
-主要的图像处理库   
-
-* opencv-python      
-* PIL/Pillow   
-* scikit-image  (Based on Pillow)  
-
 ```
 #test_4_image.py
 from skimage import io
@@ -215,6 +215,8 @@ print gray_img.shape
 plt.imshow(gray_img) # 显示灰度图片
 plt.show()
 io.imsave("test_4_new.jpg", gray_img) # 图片保存
+plt.hist(gray_img.flatten())  # 显示灰度图直方图
+plt.show()
 ```
 ```
 # output
