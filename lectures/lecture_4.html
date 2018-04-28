@@ -32,16 +32,95 @@ class: inverse
 
 数据科学常用的库与框架
 
-- Numpy  矩阵计算
-- scikit-learning    涵盖主流的统计与机器学习算法
+- Numpy  矩阵计算，数组基础，类似于matlab的矩阵运算
+- scikit-learning    涵盖主流的统计与机器学习算法，提供算法函数库
 - Pandas    处理excel等表格数据
+- Scipy     信号处理模块
 - matplotlib  用于数据与图形可视化
 
+### 机器学习常用库   
+Numpy 
+广泛应用于 矩阵计算，图像处理，数据处理等
+官方教程  https://docs.scipy.org/doc/numpy/user/quickstart.html
+
+Scikit-Learning
+主要应用于 聚类，分类，回归，决策树等机器学习任务  
+官方文档  http://scikit-learn.org/stable/index.html
+
+Matplotlib  
+官方文档 https://matplotlib.org/tutorials/index.html
 
 ---
 class: inverse
+#### Python常用数据类型
+- 基础类型      整数，小数，长整型
+- 列表    a = [1, 2, 3, 4]
+- 元组   (类似于数学中的集合)  a = (1, 2, 3, 4)
+- 字典   (K-V结构)   a = {"k": 1, "b": 2}
+- 字符串 a = "1234"   
+> 数据类型一方面提供**存储数据**的功能，一方面提供了一些特定的算法  
+1. 类型互转
+```
+# 基础类型互转
+>>>a = 1
+>>>b = float(a)
+>>>c = str(a)
+# 复杂类型转换
+>>>a = "abbbcd"
+>>>b = list(a)
+>>>print set(a)
+>>>print int(a)
+Traceback (most recent call last):
+File "<stdin>", line 1, in <module>
+ValueError: invalid literal for int() with base 10: 'abbbcd'
+>>>a = "1234"
+>>>print int(a)
+>>>print int(list(a))
+# 初始化一个字典 (方法不正确)
+>>>print dict(a)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+ValueError: dictionary update sequence element #0 has length 1; 2 is required
+```
+* 大家开始学习语言会经常遇到错误，大家需要依据这些错误逐渐学习语言的编程规则
+* 依据错误类型判定问题是一种调试技巧
+
 ---
 class: inverse
+#### 使用案例
+
+处理目录下的文件   
+1. 得到目录下的文件   
+2. 得到目录下的文件，以及得到文件的大小属性，文件类型属性(后缀名)   
+3. 得到目录有哪些后缀的文件   
+4. 得到目录下的文件的绝对路径
+
+```
+# 该任务需要使用os库
+>>>import os
+>>>os.path.listdir(".")  # 相对路径, 既有文件又有路径
+['index.html', '.DS_Store', 'css', 'js', 'README.md', 'img', 
+'assign', 'lectures', '.git', 'practice', 'fonts']
+>>>a = [i for i in os.path.listdir(".") if not os.path.isdir(i)]   # 只选择文件，完成任务1，使用列表
+'/Users/nasa/workspace/tair.ai/skc001'
+>>>{i: {"size": os.path.getsize(i), "suffix": i.split(".")[-1]} for i in a}  # 完成任务2，使用字典
+{'index.html': {'suffix': 'html', 'size': 1616}, 'README.md': {'suffix': 'md', 'size': 57}, 
+'.DS_Store': {'suffix': 'DS_Store', 'size': 6148}}
+>>>set([i.split(".")[-1] for i in a]) # 完成任务3，使用列表和元组
+set(['md', 'html', 'DS_Store'])
+>>>os.getcwd()  # 获取当前绝对路径
+>>>[os.path.join(os.getcwd(), i) for i in a]   # 完成任务 4
+['/Users/nasa/workspace/tair.ai/skc001/index.html', 
+'/Users/nasa/workspace/tair.ai/skc001/.DS_Store', 
+'/Users/nasa/workspace/tair.ai/skc001/README.md']
+```
+* [i for i in a] 使用了列表生成器，python的一种语法
+* os.getcwd(), 大家可以看windows和这里的输出是不同, 这是操作系统的差别，编程需要考虑OS问题
+* 这里通过案例介绍 列表，元组，字典 的使用场景需求
+
+**任务扩展**  
+录小有子文件夹，如何遍历全部目录包含子目录，取出某一种后缀的文件列表
+
 ---
 class: center, middle, inverse
 # Q &amp; A
