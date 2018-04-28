@@ -202,30 +202,31 @@ class: inverse
 #test_4_image.py
 from skimage import io
 import matplotlib.pyplot as plt
-
-face = io.imread("test_img.jpg")
+import numpy as np
+face = io.imread("test_img.jpg")  # 读入RGB图片
 print face
 print type(face)
-plt.imshow(face)
+print face.shape
+plt.imshow(face)    # 显示RGB图片
 plt.show()
+gray_img = 0.299 * face[:,:,0] + 0.587 * face[:,:,1] + 0.114 * face[:,:,2] # 计算灰度
+gray_img = gray_img.astype(np.uint8) # 转为图像存储格式dtype=uint8
+print gray_img.shape
+plt.imshow(gray_img) # 显示灰度图片
+plt.show()
+io.imsave("test_4_new.jpg", gray_img) # 图片保存
 ```
 ```
 # output
   ...,
-  [ 13  21  94]
-  [ 11  19  92]
-  [ 10  18  91]]
-
- [[210 147 116]
-  [210 146 118]
-  [209 148 120]
+ [[210 147 116] [210 146 118] [209 148 120]
   ...,
-  [ 13  21  94]
-  [ 11  19  92]
-  [ 10  18  91]]]
+  [ 13  21  94] [ 11  19  92][ 10  18  91]]]
 <type 'numpy.ndarray'>
 ```
 
+* 可以看出读入的图片(RGB图)是一个三维数组,同时也是3通道图片 channel=3
+* 转为灰度图像后是一个二维数组, 单通道图片，channel=1
 ---
 class: center, middle, inverse
 # Q &amp; A
