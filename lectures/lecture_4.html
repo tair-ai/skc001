@@ -154,6 +154,40 @@ TypeError: 'str' object does not support item assignment
 5. 将a赋值给b时，执行的是一个拷贝操作，a与b指向同一块内存
 6. 重新赋值与a后，其指向地址改变
 ---
+class: inverse
+#### 参数传递 (传值与传引用)
+```
+# test_4_pass.py
+def test_pass(data):
+    print id(data)
+    if isinstance(data, list):
+        data[0] = "test_list"
+    if isinstance(data, dict):
+        data['test'] = "dict"
+    if isinstance(data, int):
+        data = 233
+
+if __name__ == "__main__":
+    a = [1, 2, 3, 4]
+    print id(a)
+    test_pass(a)
+    print a
+    b = "sss"
+    print id(b)
+    test_pass(b)
+    c = {"a": 1, "b": 2}
+    print id(c)
+    test_pass(c)
+    print c
+    d = 2
+    print id(d)
+    test_pass(d)
+    print d
+```
+1. python中传参默认为传递地址，因此可变对象处理在调用过程中可以改变引用值
+2. 而传入不可改变对象，则需要重新赋值，不改变原对象值
+3. 因此效果为 可变对象为传递引用，不可变对象传值
+---
 class: center, middle, inverse
 # Q &amp; A
 
