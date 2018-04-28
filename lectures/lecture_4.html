@@ -189,6 +189,44 @@ if __name__ == "__main__":
 3. 因此效果为 可变对象为传递引用，不可变对象传值
 4. 编程中主要是了解每一个语句的执行行为，如果行为理解出错，便容易引入bug
 ---
+class: inverse
+#### 图像处理
+
+主要的图像处理库   
+
+* opencv-python      
+* PIL/Pillow   
+* scikit-image  (Based on Pillow)  
+
+```
+#test_4_image.py
+from skimage import io
+import matplotlib.pyplot as plt
+
+face = io.imread("test_img.jpg")
+print face
+print type(face)
+plt.imshow(face)
+plt.show()
+```
+```
+# output
+  ...,
+  [ 13  21  94]
+  [ 11  19  92]
+  [ 10  18  91]]
+
+ [[210 147 116]
+  [210 146 118]
+  [209 148 120]
+  ...,
+  [ 13  21  94]
+  [ 11  19  92]
+  [ 10  18  91]]]
+<type 'numpy.ndarray'>
+```
+
+---
 class: center, middle, inverse
 # Q &amp; A
 
