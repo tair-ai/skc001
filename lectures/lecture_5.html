@@ -2,14 +2,14 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>SKC001-L4</title>
+    <title>STC001-L5</title>
   </head>
   <body>
     <textarea id="source">
 
 class: middle, inverse, center
 
-# SKC001 Lecture 5
+# STC001 Lecture 5
 
 # 机器学习与Python编程 
 
@@ -24,234 +24,13 @@ class:center, middle, inverse
 
 > 本节内容主要讲解使用Python numpy, Statistics and Numerical Calculation  
 > Tair.AI Authors  
-> http://tair.ai/skc001/    
+> http://tair.ai/stc001/    
 
 ![wechat](../img/qrcode_for_tair.jpg)
 ---
 class: inverse
 
-数据科学常用的库与框架
 
-- Numpy  矩阵计算，数组基础，类似于matlab的矩阵运算
-- scikit-learning    涵盖主流的统计与机器学习算法，提供算法函数库
-- Pandas    处理excel等表格数据
-- Scipy     信号处理模块
-- matplotlib  用于数据与图形可视化
-
-### 机器学习常用库   
-Numpy 
-广泛应用于 矩阵计算，图像处理，数据处理等
-官方教程  https://docs.scipy.org/doc/numpy/user/quickstart.html
-
-Scikit-Learning
-主要应用于 聚类，分类，回归，决策树等机器学习任务  
-官方文档  http://scikit-learn.org/stable/index.html
-
-Matplotlib  
-官方文档 https://matplotlib.org/tutorials/index.html
-
-### 主要的图像处理库   
-
-* opencv-python      
-* PIL/Pillow   
-* scikit-image  https://github.com/scikit-image/skimage-tutorials
-
-
----
-class: inverse
-#### Python常用数据类型
-- 基础类型      整数，小数，长整型
-- 列表    a = [1, 2, 3, 4]
-- 元组   (类似于数学中的集合)  a = (1, 2, 3, 4)
-- 字典   (K-V结构)   a = {"k": 1, "b": 2}
-- 字符串 a = "1234"   
-> 数据类型一方面提供**存储数据**的功能，一方面提供了一些特定的算法  
-1. 类型互转
-```
-# 基础类型互转
->>>a = 1
->>>b = float(a)
->>>c = str(a)
-# 复杂类型转换
->>>a = "abbbcd"
->>>b = list(a)
->>>print set(a)
->>>print int(a)
-Traceback (most recent call last):
-File "<stdin>", line 1, in <module>
-ValueError: invalid literal for int() with base 10: 'abbbcd'
->>>a = "1234"
->>>print int(a)
->>>print int(list(a))
-# 初始化一个字典 (方法不正确)
->>>print dict(a)
-Traceback (most recent call last):
-  File "<stdin>", line 1, in <module>
-ValueError: dictionary update sequence element #0 has length 1; 2 is required
-```
-* 大家开始学习语言会经常遇到错误，大家需要依据这些错误逐渐学习语言的编程规则
-* 依据错误类型判定问题是一种调试技巧
-
----
-class: inverse
-#### 使用案例
-
-处理目录下的文件   
-1. 得到目录下的文件   
-2. 得到目录下的文件，以及得到文件的大小属性，文件类型属性(后缀名)   
-3. 得到目录有哪些后缀的文件   
-4. 得到目录下的文件的绝对路径
-
-```
-# 该任务需要使用os库
->>>import os
->>>os.path.listdir(".")  # 相对路径, 既有文件又有路径
-['index.html', '.DS_Store', 'css', 'js', 'README.md', 'img', 
-'assign', 'lectures', '.git', 'practice', 'fonts']
->>>a = [i for i in os.path.listdir(".") if not os.path.isdir(i)]   # 只选择文件，完成任务1，使用列表
-'/Users/nasa/workspace/tair.ai/skc001'
->>>{i: {"size": os.path.getsize(i), "suffix": i.split(".")[-1]} for i in a}  # 完成任务2，使用字典
-{'index.html': {'suffix': 'html', 'size': 1616}, 'README.md': {'suffix': 'md', 'size': 57}, 
-'.DS_Store': {'suffix': 'DS_Store', 'size': 6148}}
->>>set([i.split(".")[-1] for i in a]) # 完成任务3，使用列表和元组
-set(['md', 'html', 'DS_Store'])
->>>os.getcwd()  # 获取当前绝对路径
->>>[os.path.join(os.getcwd(), i) for i in a]   # 完成任务 4
-['/Users/nasa/workspace/tair.ai/skc001/index.html', 
-'/Users/nasa/workspace/tair.ai/skc001/.DS_Store', 
-'/Users/nasa/workspace/tair.ai/skc001/README.md']
-```
-* [i for i in a] 使用了列表生成器，python的一种语法
-* os.getcwd(), 大家可以看windows和这里的输出是不同, 这是操作系统的差别，编程需要考虑OS问题
-* 这里通过案例介绍 列表，元组，字典 的使用场景需求
-
-**任务扩展**  
-目录有子文件夹，如何遍历全部目录包含子目录，取出某一种后缀的文件列表
----
-class: inverse
-#### 可变与不可变对象
-```
->>>a = [1, 2, 3, 4, 5]
->>>a.append("6")    # 数组是可以存储多种类型
-[1, 2, 3, 4, 5,'6']
->>>b = a
->>>print id(a)
-4376046736
->>>print id(b)
-4376046736
->>>b[0] = 2
->>>a
-[2, 2, 3, 4, 5]
->>> a = "sssss"
->>>print id(a)
-4375980792
->>>print id(b)
-4376046736
->>> b = a
->>> b[0] = "k"
-Traceback (most recent call last):
-  File "<stdin>", line 1, in <module>
-TypeError: 'str' object does not support item assignment
-
-```
-1. 改变数组中的元素是可行的，数组是可变类型，同样的操作放到字符串则不行，字符串是不可变对象
-2. **可变对象:** 数组，字典         **不可变对象:** 字符串，元组
-3. append操作表明数组是可变长的，同时数组中支持存放多种类型, 这和C/C++/Java等有显著区别
-4. 类似于3中描述，类似于Python的语言为动态语言，类似于C/C++/Java的语言为静态语言
-5. 将a赋值给b时，执行的是一个拷贝操作，a与b指向同一块内存
-6. 重新赋值与a后，其指向地址改变
----
-class: inverse
-#### 参数传递 (传值与传引用)
-```
-# test_4_pass.py
-def test_pass(data):
-    print id(data)
-    if isinstance(data, list):
-        data[0] = "test_list"
-    if isinstance(data, dict):
-        data['test'] = "dict"
-    if isinstance(data, int):
-        data = 233
-
-if __name__ == "__main__":
-    a = [1, 2, 3, 4]
-    print id(a)
-    test_pass(a)
-    print a
-    b = "sss"
-    print id(b)
-    test_pass(b)
-    c = {"a": 1, "b": 2}
-    print id(c)
-    test_pass(c)
-    print c
-    d = 2
-    print id(d)
-    test_pass(d)
-    print d
-```
-1. python中传参默认为传递地址，因此可变对象处理在调用过程中可以改变引用值
-2. 而传入不可改变对象，则需要重新赋值，不改变原对象值
-3. 因此效果为 可变对象为传递引用，不可变对象传值
-4. 编程中主要是了解每一个语句的执行行为，如果行为理解出错，便容易引入bug
----
-class: inverse
-#### 图像处理
-```
-#test_4_image.py
-from skimage import io
-import matplotlib.pyplot as plt
-import numpy as np
-face = io.imread("test_img.jpg")  # 读入RGB图片
-print face
-print type(face)
-print face.shape
-plt.imshow(face)    # 显示RGB图片
-plt.show()
-gray_img = 0.299 * face[:,:,0] + 0.587 * face[:,:,1] + 0.114 * face[:,:,2] # 计算灰度
-gray_img = gray_img.astype(np.uint8) # 转为图像存储格式dtype=uint8
-print gray_img.shape
-plt.imshow(gray_img) # 显示灰度图片
-plt.show()
-io.imsave("test_4_new.jpg", gray_img) # 图片保存
-plt.hist(gray_img.flatten())  # 显示灰度图直方图
-plt.show()
-```
-```
-# output
-  ...,
- [[210 147 116] [210 146 118] [209 148 120]
-  ...,
-  [ 13  21  94] [ 11  19  92][ 10  18  91]]]
-<type 'numpy.ndarray'>
-(346, 550, 3)
-(346, 550)
-```
-
-* 可以看出读入的图片(RGB图)是一个三维数组,同时也是3通道图片 channel=3
-* 转为灰度图像后是一个二维数组, 单通道图片，channel=1
----
-class: inverse
-#### 数学计算
-绘制sin函数，曲线绘制   
-```
->>>import numpy as np
->>>import matplotlib.pyplot as plt
->>>x = np.linspace(-4, 4, 1000, dtype=float)
->>>y = np.sin(x)
->>>plt.plot(y)
->>>plt.show()
-```
-
-线性回归(最小二乘法)
-```
->>>real_func = lambda x: -2*x + 4
->>>d1 = np.array(np.linspace(-4, 4, 1000))
->>>d2 = real_func(d1) + .2 * np.random.normal(loc=0.0, scale=0.5, size=1000)
->>>plt.scatter(d1, d2)
->>>plt.show()
-```
 ---
 class: center, middle, inverse
 # Q &amp; A
